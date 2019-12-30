@@ -1,0 +1,13 @@
+<script>
+  //json是否广义包含一个对象 [{a:1,b:2}]广义包含{a:1}
+	const json1=[{a:1},{b:2}],
+	json2=[{a:1}],
+	val='a';
+	function json_includes(json,obj,val){
+	  return json.some(d=>{
+		  if(val in d && val in obj){
+			  return d.val===obj.val
+			}
+		})
+	}
+</script>

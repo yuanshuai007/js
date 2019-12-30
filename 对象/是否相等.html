@@ -1,0 +1,13 @@
+<script>
+//https://www.jianshu.com/p/90ed8b728975
+
+//1.没有嵌套
+function obj_eq(obj1,obj2){
+	if(Object.keys(obj1).length!==Object.keys(obj2).length) return false
+	for(let key in obj1){
+	  if(obj1[key]!==obj2[key]) return false
+	}
+	return true
+}
+console.log(obj_eq({a:1,b:2},{a:1,b:2}))
+</script>

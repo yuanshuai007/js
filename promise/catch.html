@@ -1,0 +1,26 @@
+<script>
+/*
+** 1.如果回调里面发生错误，catch能抓住
+** 2.多个promise
+*/
+
+//1.如果then里面发生错误，catch能抓住
+Promise.resolve().then(()=>{
+  throw 1
+}).catch((e)=>{
+	console.log(e)
+})
+
+
+const p3=new Promise((resolve,reject)=>{
+  resolve(10)
+})
+p3.then(()=>{
+  throw 11
+},()=>{}).then(()=>{
+  console.log(12)
+  throw 13
+}).catch(e=>{
+  console.log(e)
+})
+</script>

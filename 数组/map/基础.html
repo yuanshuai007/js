@@ -1,0 +1,17 @@
+<script>
+/*
+  *必须要有回调
+	1.如果没有写返回值，默认return undefined
+*/
+
+//1.如果没有写返回值，默认return undefined
+const arr1=[1,2,3].map(()=>{return 2})
+//console.log(arr1) [undefined,undefined,undefined]
+
+
+//2.parseInt(d,i)
+//只返回整数部分 parseInt('1.1') =>1
+//只返回十进制  parseInt('11',2) =>3
+const arr2=['1','2','3'].map(parseInt)
+console.log(arr2)
+</script>

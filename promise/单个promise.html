@@ -1,0 +1,27 @@
+<script>
+/*
+** 1.resolve()将等待状态变成成功，reject()将等待变成失败
+** 2.等待变成成功，触发第一个回调，等待变成失败，触发第二个回调
+** 3.new Promise相当于注册了一个事件
+** 4.promise.then相当于等待事件被触发
+** 5.promise.then可以被反复触发
+*/
+console.log(1)
+var promise = new Promise(function(resolve, reject) {
+  resolve(1)
+	//reject(1)
+});
+console.log(2)
+promise.then(()=>{
+	console.log('由resolve()触发')  
+},()=>{
+	console.log('由reject()触发')
+})
+console.log(promise)
+promise.then(()=>{
+	console.log('由resolve()触发')  
+},()=>{
+	console.log('由reject()触发')
+})
+console.log(3)
+</script>

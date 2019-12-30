@@ -1,0 +1,30 @@
+<script>
+/*
+	1.保留为真的，去掉为假的，默认都为假
+	2.自动做类型转换
+*/
+function fn1(){
+	const arr=[1,2,3]
+	const brr=arr.filter((d,i)=>{
+	  return true
+	})
+	console.log(brr)  
+}
+//fn1() [1,2,3]
+function fn2(){
+	const arr=[1,2,3]
+	const brr=arr.filter((d,i)=>{
+	  
+	})
+	console.log(brr)  
+}
+//fn2() []
+function fn3(){
+	const arr=[1,2,3]
+	const brr=arr.filter((d,i)=>{
+	  return 1
+	})
+	console.log(brr)  
+}
+fn3()
+</script>

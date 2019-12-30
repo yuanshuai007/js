@@ -1,0 +1,84 @@
+<!--
+ 1.求和，求乘积
+ 2.统计数组中的元素出现的次数
+ 3.数组去重
+ 4.将多维数组变成一维数组
+ 5.json里面的某个属性求和
+-->
+<script>
+//1.求和，求乘积
+function fn1(){
+	const arr=[1,2,3,4]
+	const sum=arr.reduce((x,y)=>x+y)
+	const mul=arr.reduce((x,y)=>x*y)
+	console.log(sum,mul)   
+}
+//fn1()
+
+
+//2.统计数组中的元素出现的次数
+function fn2(){
+	const arr=['a','b','a','c','b']
+	const obj=arr.reduce((pre,cur)=>{
+		if(cur in pre){
+			pre[cur]++
+		}else{
+			pre[cur]=1
+		}
+		return pre
+	},{})
+	console.log(obj) 
+}
+//fn2()
+
+
+//3.数组去重
+function fn3(){
+	const arr=['a','b','a','c','b']
+	const _arr=arr.reduce((pre,cur)=>{
+		if(pre.indexOf(cur)<0){
+		  pre.push(cur)
+		}
+		return pre
+	},[])
+	console.log(_arr) 
+}
+//fn3()
+
+
+//4.将多维数组变成一维数组
+function fn4(arr,_arr=[]){
+  if(!Array.isArray(arr)){
+		_arr.push(arr)
+	}else{
+	  arr.forEach(d=>fn4(d,_arr))
+		return _arr
+	}
+}
+//const arr=[1,[2,22],3,[4,[5,6]]]
+//console.log(fn4(arr))
+
+
+//5.json里面的某个属性求和
+function fn5(){
+	const json = [
+			{
+					subject: 'math',
+					score: 10
+			},
+			{
+					subject: 'chinese',
+					score: 20
+			},
+			{
+					subject: 'english',
+					score: 30
+			}
+	];
+	const result=json.reduce((pre,cur)=>{
+	  return pre+cur.score
+	},0)
+	console.log(result)
+}
+fn5()
+</script>

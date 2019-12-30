@@ -1,0 +1,25 @@
+<script>
+/*
+** 1.then()返回一个promise，默认状态为成功，值为undefined
+** 2.在两个回调中，return val 相当于resolve(val)
+** 3.在两个回调中，throw val 相当于reject(val)
+*/	
+const p1=new Promise((resolve,reject)=>{
+  resolve(1)
+})
+const p2=new Promise((resolve,reject)=>{
+  resolve(1)
+})
+//第一个回调return  等价于  第二个回调return
+p1.then((val)=>{
+  return ++val
+}).then((val)=>{
+  console.log(val)
+})
+//第一个回调throw  等价于  第二个回调throw
+p2.then((val)=>{
+  throw ++val
+}).then(()=>{},(val)=>{
+  console.log(val)
+})
+</script>
