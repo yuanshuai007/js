@@ -1,0 +1,29 @@
+<html>
+<head>
+
+</head>
+<body>
+<script type="text/javascript">
+//一个函数里面的this,指向函数所在的对象
+//箭头函数不会形成自己的this,会向上找this
+Function.prototype.bind=function(context,...rest){
+  return ()=>{
+	  this.apply(context,rest)
+	}
+}
+window.a=1;
+let obj={a:11};
+function fn(){console.log(this.a)}
+fn.bind(obj)()
+
+let b=2;
+console.log(b===window.b)
+
+var name = "xiaomi";
+console.log(window.name);//"xiaomi"
+</script>
+<script>
+	console.log(b,name)
+</script>
+</body>
+</html>

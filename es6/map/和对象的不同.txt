@@ -1,0 +1,13 @@
+一 创建方式
+1.map---只能new Map
+(1)new Map([[1,1],[2,2]])
+(2)new Map()  map.set(1,1)
+
+2.obj
+(1)字面量---可以解构
+(2)new Class
+
+二 访问值的方式
+1.map---只能get
+
+2.obj---obj.key或者obj[key]

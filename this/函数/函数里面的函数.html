@@ -1,0 +1,23 @@
+<html>
+<head>
+
+</head>
+<body>
+<script type="text/javascript">
+//函数里面的函数指向window
+//前头函数不形成自己的this,借用上层的this
+function fn(){
+  function foo(){console.log(this)}
+	foo()
+}
+let obj={a:1}
+fn.bind(obj)()
+
+function fn1(){
+  const foo1=()=>{console.log(this)}
+	foo1()
+}
+fn1.bind(obj)()
+</script>
+</body>
+</html>

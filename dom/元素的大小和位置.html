@@ -1,0 +1,26 @@
+<html>
+<head>
+</head>
+<body>
+<div id="self" class="">
+	self
+</div>
+<!--
+getBoundingClientRect
+1.x,y  元素左上角的坐标
+2.width height 元素的宽和高
+
+3.top 上到上     元素的上面到页面的上面
+4.bottom 下到上  元素的下面到页面的上面
+5.left 左到左    元素的左面到页面的左面
+6.right 左到右   元素的左面到页面的右面
+-->
+<script>
+function fn(){
+  let self=document.getElementById('self')
+	console.log(self.getBoundingClientRect())
+}
+fn()
+</script>
+</body>
+</html>

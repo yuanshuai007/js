@@ -1,0 +1,49 @@
+<html>
+<head>
+</head>
+<body>
+<style type="text/css">
+	.d1{
+	  width:500px;
+		height:100px;
+/*		display:flex;*/
+		border:1px solid #000;
+/*		position:relative;*/
+	}
+	.d2{
+	  width:50px;
+		height:50px;
+		margin-top:49px;
+		border:1px solid #000;
+/*		position:absolute;*/
+/*		left:10px;*/
+	}
+</style>
+<div class="d1">
+	<div class="d2" id='d2'>
+		
+	</div>
+</div>
+<script>
+/***
+原理
+1.状态1到状态2,形成动画
+2.状态1可以省掉，就是元素的现有状态
+raf(()=>{
+  状态1,
+	raf(()=>{状态2})
+})
+*/
+  const d2=document.getElementById('d2')
+	const _raf=requestAnimationFrame
+	const raf=fn=>_raf(()=>{_raf(fn)})
+	
+	raf(()=>{
+	  d2.style.transform='translateX(200px)'
+		d2.style.transitionDuration='2000ms'
+	})
+//	d2.style.transform='translateX(100px)'
+//  d2.style.transitionDuration='2000ms'
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<script>
+	function indexOf_all(arr,brr){
+	  return arr.reduce((pre,cur,i)=>{
+		  if(brr.includes(cur)) pre.push(i)
+			return pre
+		},[])
+	}
+	const arr=['a','b','c','bb'],brr=['bb','c'];
+	console.log(indexOf_all(arr,brr))
+</script>

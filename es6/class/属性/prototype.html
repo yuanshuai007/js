@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+
+</style>
+</head>
+<body>
+<!--
+1.把属性定义在prototype上，和函数一样
+-->
+<script>
+class A{
+  _val=0
+  get val(){
+	  return this._val
+	}
+	set val(value){
+	  this._val=value
+	}
+}	
+const a=new A()
+console.log(a)
+console.log(a.hasOwnProperty('a'),'val' in a)
+console.log(a.val)
+
+//在自己的属性上，创建一个新的属性val
+a.val=10
+console.log(a.val)
+</script>
+
+
+</body>
+</html>

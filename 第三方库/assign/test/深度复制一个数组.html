@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+</style>
+</head>
+<body>
+<script src='../assign.js'></script>
+<script>
+/*obj=assign({},config)
+  1.obj和config各自指向不同的对象
+*/
+let json=[
+  {id:1,name:'a'},
+	{id:2,name:'b'},
+]
+ 
+let obj=assign({},{a:json})
+
+obj.a[0].id=11
+console.log(obj,json)
+
+</script>
+
+</body>
+</html>

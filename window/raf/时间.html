@@ -1,0 +1,74 @@
+<html>
+<head>
+</head>
+<body>
+<style type="text/css">
+	.d1{
+	  width:500px;
+		height:100px;
+		display:flex;
+		border:1px solid #000;
+		position:relative;
+	}
+	.d2{
+	  width:50px;
+		height:50px;
+		margin-top:49px;
+		border:1px solid #000;
+		position:absolute;
+/*		left:10px;*/
+	}
+</style>
+<div class="d1">
+	<div class="d2" id='d2'>
+		
+	</div>
+</div>
+<script>
+/*
+封装之后，动画执行次数减半
+*/
+  const d2=document.getElementById('d2')
+	const _raf=requestAnimationFrame
+	function raf(fn){
+	  _raf(()=>{
+		  _raf(fn)
+		})
+	}
+	/*let m=0;
+	function move(){
+	  raf(()=>{
+		  if(m<1){
+				d2.style.left=+(d2.style.left.slice(0,-2))+1;
+				console.log('raf')
+				move()  
+			}
+		}) 
+	}
+	setTimeout(()=>{
+		console.log('timeout')
+		m++;
+	},3000)
+	move();*/
+//raf 181次  setTimeout是异步，move先执行了一次，计时器才开始计时
+//timeout
+  let m=0;
+	setTimeout(()=>{
+		console.log('timeout')
+		m++;
+	},3000)
+  function move(){
+	  raf(()=>{
+			if(m<1){
+				d2.style.left=+(d2.style.left.slice(0,-2))+2;
+				console.log('raf')
+				move()  
+			}	    
+		})		
+	}
+	move()
+//raf 90
+//timeout
+</script>
+</body>
+</html>

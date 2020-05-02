@@ -1,0 +1,68 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+
+</style>
+</head>
+<body>
+<!--
+***目标对象存贮一些状态,状态发生改变,通知观察者
+***以数据为核心
+
+数据变化---相应的函数被执行
+-->
+<script>
+class Utils{
+	get_set(obj,get_fn,set_fn){
+		for(let key in obj){
+			let value=obj[key]
+			Object.defineProperty(obj,key,{
+				set(val){
+				  //console.log(set_fn)
+					if(set_fn) set_fn(val,value)
+					value=val
+				},
+				get(){
+					if(get_fn) get_fn()
+					return value
+				}
+			})
+		}
+	}  
+}
+class Subject extends Utils{
+  observers=[]
+	constructor(state){
+	  super()
+    this.state=state;
+	  this.get_set(this.state,null,this.notify.bind(this))
+	}
+	add(ob){
+	  //console.log(this)
+	  this.observers.push(ob)
+	}
+	notify(val,value){
+	  //console.log(this)
+	  this.observers.forEach(d=>d.update(val,value))
+	}
+}
+class Observer{
+  update(val,value){
+	  console.log(val,value)
+	}
+}
+
+const sub=new Subject({a:1,b:2})
+const ob=new Observer()
+
+sub.add(ob)
+sub.state.a=11
+sub.state.b=22
+</script>
+
+
+</body>
+</html>

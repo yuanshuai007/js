@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<body>
+<div id="self" class="">
+	self
+</div>
+<div id="a" class="">
+	<div id="b" class="">
+		bbb
+	</div>
+</div>
+<input type="button" value="删除自己" onclick="fn1()">
+<input type="button" value="删除子元素" onclick="fn2()">
+<!--
+1.remove()没有参数，删除自己
+2.有参数就是删除自己的子元素
+
+3.getElementById只有document有这个方法
+-->
+<script>
+function fn1(){
+  let self=document.getElementById('self')
+	self.remove();
+}
+function fn2(){
+  let a=document.getElementById('a')
+	let b=document.getElementById('b')
+	a.remove(b)
+}
+</script>
+</body>
+</html>

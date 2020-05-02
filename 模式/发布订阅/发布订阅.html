@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+
+</style>
+</head>
+<body>
+<!--
+1.订阅者订阅一个主题,并给这些主题添加一些函数
+topics
+{
+  topic_a:[fn1,fn2,...],
+	topic_b:[fn1,fn2,...]
+}
+2.发布者，执行这些函数，并将消息作为参数传入
+for(let fn of topic_a){
+  fn(...args)
+}
+-->
+<script>
+let pubsub={
+  topics:{},
+	sub(topic,fn){
+	  if(!this.topics[topic]){
+		  this.topics[topic]=[]
+		}
+		this.topics[topic].push(fn)
+	},
+	pub(topic,...args){
+	  this.topics[topic].forEach(fn=>fn(...args))
+	}
+}
+pubsub.sub('test',(a,b)=>{
+  console.log(a,b)
+})
+pubsub.pub('test',1,2)
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+
+</style>
+</head>
+<body>
+<!-- https://www.jb51.net/article/171471.htm
+
+1.嵌套的对象能代理
+2.push值触发一次
+3.不重复代理
+-->
+<script>
+const rawToReactive = new WeakMap()
+const reactiveToRaw = new WeakMap()
+ 
+// utils
+function isObject(val) {
+ return typeof val === 'object'
+}
+ 
+function hasOwn(val, key) {
+ const hasOwnProperty = Object.prototype.hasOwnProperty
+ return hasOwnProperty.call(val, key)
+}
+ 
+// traps
+function createGetter() {
+ return function get(target, key, receiver) {
+  console.log('get')
+  const res = Reflect.get(target, key, receiver)
+  return isObject(res) ? reactive(res) : res
+ }
+}
+ 
+function set(target, key, val, receiver) {
+ const hadKey = hasOwn(target, key)
+ const oldValue = target[key]
+ 
+ val = reactiveToRaw.get(val) || val
+ const result = Reflect.set(target, key, val, receiver)
+ //对象有新key 
+ if (!hadKey) {
+  console.log('add new key')
+ //对象有新value
+ } else if(val !== oldValue) {
+  console.log('modify new value')
+ }
+ 
+ return result
+}
+ 
+// handler
+const mutableHandlers = {
+ get: createGetter(),
+ set: set,
+}
+ 
+ 
+function createReactiveObject(target, toProxy, toRaw, baseHandlers) {
+ let observed = toProxy.get(target)
+ // 原数据已经有相应的可响应数据, 返回可响应数据
+ if (observed !== void 0) {
+  return observed
+ }
+ // 原数据已经是可响应数据
+ if (toRaw.has(target)) {
+  return target
+ }
+ observed = new Proxy(target, baseHandlers)
+ toProxy.set(target, observed)
+ toRaw.set(observed, target)
+ return observed
+}
+
+// entry
+function reactive(target) {
+ return createReactiveObject(
+  target,
+  rawToReactive,
+  reactiveToRaw,
+  mutableHandlers,
+ )
+}
+
+let p1=reactive([1,2,3])
+//p.push(4) //add new key
+
+let p2=reactive([{a:1},{b:2}])
+p2[0].a=11
+p2[0].a=22
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+***文件会在导入的时候执行
+***多次导入,只会执行一次
+
+
+例如 vue-cli
+1  a.js
+function test(){console.log('test')}
+export let a=1;
+
+2  在main.js中导入a.js
+
+3  在app.vue中导入a.js
+
+结果
+test函数只执行了一次
+
+by the way
+console.log(this)//undefined 

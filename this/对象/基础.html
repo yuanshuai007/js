@@ -1,0 +1,21 @@
+<html>
+<head>
+
+</head>
+<body>
+<script type="text/javascript">
+const aa={
+  fn(){
+	  console.log(this)
+	},
+	//箭头函数里面的this指向所在环境的外部环境
+	fn1:()=>{
+	  console.log(this)
+	}
+}
+aa.fn()
+aa.fn1()
+</script>
+
+</body>
+</html>

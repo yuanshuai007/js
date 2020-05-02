@@ -1,0 +1,33 @@
+<script>
+let p=(function(){
+  function isObject(target){
+	  return typeof target === 'object'
+	}
+  function reactive(data){
+	  return new Proxy(data,{
+		  get(target,key){
+			  console.log('get')
+			  return isObject(target[key]) ? reactive(target[key]) 
+				: Reflect.get(target,key)
+			},
+			set(target,key,value){ 
+			  console.log('set')
+				//添加新的key
+			  if(!(key in target)){
+				  console.log('new prop')
+				//修改旧值
+				}else if(target[key] !== value){
+				  console.log('md value')
+				}
+			  return Reflect.set(target,key,value)
+			}
+		})
+	}
+	return reactive([{a:1}])
+})()
+
+//p.splice(0,1,1,2)
+//console.log(p)
+p[0].a=2
+p[0].a=3
+</script>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+</style>
+</head>
+<body>
+<script src='../assign.js'></script>
+<script>
+/*合并 a和b(a在前，b在后)
+  1.如果属性相同，用b的值覆盖a的值
+	2.如果属性不相同，搞到一起
+*/
+
+/*返回一个新对象obj
+  1.这个obj和a指向相同的对象
+	2.和b没有关系
+*/
+let config = {
+  admin: true,
+  author: {
+    name: { first: 'Joe' }
+  }
+};
+ 
+let locals = {
+  admin: false,
+  author: {
+    name: { last: 'Smith' },
+    username: 'joesmith'
+  }
+};
+
+let obj=assign(config, locals)
+console.log(obj,config);
+
+obj.admin=1
+console.log(obj,config,locals)
+
+obj.author.name.last=1
+console.log(obj,locals)
+</script>
+
+</body>
+</html>

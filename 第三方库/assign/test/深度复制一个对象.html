@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+</style>
+</head>
+<body>
+<script src='../assign.js'></script>
+<script>
+/*obj=assign({},config)
+  1.obj和config各自指向不同的对象
+*/
+let config = {
+  admin: true,
+  author: {
+    name: { first: 'Joe' }
+  }
+};
+ 
+let obj=assign({},config)
+
+obj.admin=1
+console.log(obj,config)
+
+</script>
+
+</body>
+</html>

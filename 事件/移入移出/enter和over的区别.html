@@ -1,0 +1,36 @@
+<html>
+<body>
+<style type="text/css">
+  .d1{
+	  width:200px;
+		height:200px;
+		border:1px solid #000;
+	}
+  .d2{
+	  width:100px;
+		height:100px;
+		border:1px solid #000;
+	}
+</style>
+<!--
+1.有子元素才有区别
+2.mouseenter在元素内部不会触发，
+3.mouseover在元素内部会触发
+-->
+<div id="" class="d1" onmouseenter='fn()'>
+	<div id="" class="d2">
+		mouseenter
+	</div>
+</div>
+<div id="" class="d1" onmouseover='fn()'>
+	<div id="" class="d2">
+		mouseeover
+	</div>
+</div>
+<script>
+	function fn(){
+	  console.log(111)
+	}
+</script>
+</body>
+</html>

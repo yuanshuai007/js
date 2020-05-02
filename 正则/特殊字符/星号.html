@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+	body{
+	  margin:0;
+	}
+</style>
+</head>
+<body>
+	
+<script>
+/*
+表示0次或多次
+*/
+//【多选】正则表达式A*B可以匹配
+//A
+//ACD
+//AB
+//AAB
+const reg=/A*B/
+console.log(reg.test('A')) //false
+console.log(reg.test('ACD')) //false
+console.log(reg.test('AB'))  //true
+console.log(reg.test('AAB'))  //true
+</script>
+
+</body>
+</html>

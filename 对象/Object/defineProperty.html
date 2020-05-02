@@ -1,0 +1,42 @@
+<!--
+
+1.set和get
+如果get里面return自己(obj.a),会发生堆栈溢出的错误。
+因为浏览器读到obj.a会触发get函数，
+get函数会return obj.a从而导致死循环
+所以get set必须要有第三方值
+
+-->
+<script>
+//1.给单个属性添加get，set
+let obj={a:1},value=obj.a;
+Object.defineProperty(obj,'a',{
+  get(){
+	  return value
+	},
+	set(val){
+	  value=val;
+	}
+})
+obj.a=2;
+console.log(obj.a)
+
+//给多个属性添加get和set
+let subject={a:1,b:2,c:3}
+function get_set(obj,get_fn,set_fn){
+  for(let key in obj){
+	  let value=obj[key]
+	  Object.defineProperty(obj,key,{
+		  set(val){
+			  value=val
+				if(set_fn) set_fn()
+			},
+			get(){
+			  if(get_fn) get_fn()
+				return value
+			}
+		})
+	}
+}
+get_set(subject)
+</script>

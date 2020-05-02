@@ -1,0 +1,5 @@
+1.JS事件机制
+https://blog.csdn.net/sinat_34032652/article/details/79850674
+
+2.语法
+https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener

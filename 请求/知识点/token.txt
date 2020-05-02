@@ -1,0 +1,8 @@
+1.深入理解token
+https://www.cnblogs.com/xuxinstyle/p/9675541.html
+
+2.请求时token过期自动刷新token
+https://segmentfault.com/a/1190000016946316#comment-area
+
+3.为什么要用refresh token?
+为了避免用户操作的时候token失效，如果不用refresh token，那么每次请求都得延迟token失效的时间。请求次数过多，会造成后台的大量读写操作

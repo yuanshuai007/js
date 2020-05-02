@@ -1,0 +1,24 @@
+<!--
+1.只能在内部访问的变量，外部想要访问，必须通过特权函数
+https://www.jb51.net/article/164815.htm
+-->
+<script>
+const A=(()=>{
+  const private_obj={
+	  a:Symbol('a')
+	}
+	class A{
+	  constructor(a){
+		  this[private_obj.a]=a
+		}
+		get(key){
+		  return this[private_obj[key]]
+		}
+	}
+	return A
+})()
+const a=new A(1)
+console.log(a.a) //undefined
+console.log(a.get('a')) //1
+
+</script>

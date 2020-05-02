@@ -1,0 +1,9 @@
+<script>
+	function json_includes_by(json,obj,attr){
+	  return json.some(d=>{
+		  if(attr in d && attr in obj){
+			  return d[attr]===obj[attr]
+			}
+		})
+	}
+</script>

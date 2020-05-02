@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+
+</style>
+</head>
+<body>
+<script>
+class A{
+  fna(fn){
+	  fn()
+	}
+}
+class B extends A{
+  constructor(){
+	  super()
+	  this.fna(this.fnb)
+	}
+  fnb(){
+	  console.log(this)
+	}
+}
+new B()
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+1.js学习-es6实现枚举
+https://www.cnblogs.com/meetqy/p/11990977.html
+
+2.JS模拟实现枚举
+http://www.fly63.com/article/detial/8180
+
+3.ES6实现枚举类
+https://www.jianshu.com/p/c15f6f02d51d

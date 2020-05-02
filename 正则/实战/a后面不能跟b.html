@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+	body{
+	  margin:0;
+	}
+</style>
+</head>
+<body>
+	
+<script>
+/*
+
+*/
+const reg=/a(?!b)/g
+//最好只做一次判断
+console.log(reg.test('cc--a'))  //true
+console.log(reg.test('cc--ab'))  //false
+console.log(reg.test('cc--acb')) //true
+
+//只能匹配一次
+console.log(reg.test('cc--acab')) //false
+console.log(reg.test('cc--acab--acab--ab')) //true
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+1.重学JS（九）—— 观察者模式和发布/订阅模式真不一样
+https://www.jianshu.com/p/f0f22398d25d

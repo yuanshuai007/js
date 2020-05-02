@@ -1,0 +1,5 @@
+1.js设计模式之【观察者模式】VS【发布/订阅模式模式】的区别？
+https://www.cnblogs.com/leaf930814/p/9014200.html
+
+2.重学JS（九）—— 观察者模式和发布/订阅模式真不一样
+https://www.jianshu.com/p/f0f22398d25d

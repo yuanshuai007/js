@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+
+</style>
+</head>
+<body>
+<!--
+列表结构
+{
+  '房源1':['客户1','客户2',...],
+	'房源2':['客户1','客户2',...],
+	...
+}
+
+A{
+  add(b)
+	notify(b)
+}
+B{
+  listen(msg)
+}
+-->
+<script>
+let house={
+  a:'80平',
+	b:'100平'
+}
+/*cache记录通知过的消息
+cache={
+  a:80,
+	b:100
+}
+*/
+class Sale{
+  list={}
+  cache={}
+  add(type,client){
+	  if(!this.list[type]) this.list[type]=[]
+		this.list[type].push(client)
+    //
+		if(this.cache[type]) client.listen(client.name,type,this.cache[type])
+	}
+	notify(type,price){
+	  this.cache[type]=price
+	  this.list[type].forEach(client=>client.listen(client.name,type,price))
+	}
+	cancel(type,client){
+	  let id=this.list[type].findIndex(d=>d===client)
+		this.list[type].splice(id,1)
+	}
+}	
+class Client{
+  constructor(name){
+	  this.name=name
+	}
+  listen(name,type,price){
+	  console.log(name+'--'+house[type]+'--'+price+'万')
+	}
+}
+const sale=new Sale()
+const client1=new Client('客户1')
+const client2=new Client('客户2')
+sale.add('a',client1)
+sale.add('a',client2)
+sale.add('b',client2)
+
+sale.cancel('a',client2)
+
+sale.notify('a',80)
+sale.notify('b',100)
+
+const client3=new Client('客户3')
+sale.add('a',client3)
+//先通知消息，后添加接受消息的人
+</script>
+
+
+</body>
+</html>

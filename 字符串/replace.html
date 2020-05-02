@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+
+</style>
+</head>
+<body>
+<script>
+/*函数的参数
+1.第一个，匹配到的值
+2.第二阶段的参数 一个()对应一个参数
+比如下面的c对应(\w)
+*/	
+let str='-van-swipe-item';
+console.log(String.prototype.replace)
+str=str.replace(/-(\w)/g, function (_,c) {
+    console.log(arguments)
+    return c.toUpperCase();
+  });
+console.log(str)//VanSwipeItem
+</script>
+
+
+</body>
+</html>

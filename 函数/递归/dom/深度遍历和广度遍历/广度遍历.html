@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+
+</style>
+</head>
+<body>
+<div id="root" class="">
+	<div id="d1" class="">
+		<div id="d11" class="">
+			d11
+		</div>
+	</div>
+	<div id="d2" class="">
+	  d2
+	</div>
+	<div id="d3" class="">
+		<div id="d31" class="">
+			d31
+		</div>
+		<div id="d32" class="">
+			d32
+		</div>
+	</div>
+</div>
+<!--
+递归函数可以看做成子函数
+-->
+<script>
+let widthTraversal2 = (node) => {
+  let nodes = []
+  let stack = []
+  if (node) {
+    stack.push(node)
+    while (stack.length) {
+      let item = stack.shift()
+      let children = item.children
+      nodes.push(item)
+        // 队列，先进先出
+        // nodes = [] stack = [parent]
+        // nodes = [parent] stack = [child1,child2,child3]
+        // nodes = [parent, child1] stack = [child2,child3,child1-1,child1-2]
+        // nodes = [parent,child1,child2]
+      for (let i = 0; i < children.length; i++) {
+        stack.push(children[i])
+      }
+    }
+  }
+  return nodes
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+<head>
+</head>
+<body>
+<style type="text/css">
+	.d1{
+	  width:500px;
+		height:100px;
+		display:flex;
+		border:1px solid #000;
+		position:relative;
+	}
+	.d2{
+	  width:50px;
+		height:50px;
+		margin-top:49px;
+		border:1px solid #000;
+		position:absolute;
+/*		left:10px;*/
+	}
+</style>
+<div class="d1">
+	<div class="d2" id='d2'>
+		
+	</div>
+</div>
+<script>
+/*特点：动画，清晰，稳定，不闪烁
+***浏览器每次重绘前，执行raf的回调
+1.假设电脑的刷新频率是60
+2.那么动画要执行1s，那么回调函数必须执行60次 
+*/
+  const d2=document.getElementById('d2')
+	//d2.style.left='20'
+	//console.log(d2.style.left.slice(0,-2)+10)
+	//console.log(d2.style.left)
+	const raf=requestAnimationFrame
+	//const _raf=raf((fn)={raf(fn)})
+	let n=0;
+	function move(){
+	  raf(()=>{
+		  d2.style.left=+(d2.style.left.slice(0,-2))+1;
+			n++;
+			if(n<180) move()
+		}) 
+	}
+	move();
+</script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+script中的import是js的语法, 是在js中去引用css文件。
+
+style中的@import是stylus的语法，是在css中引用css文件。

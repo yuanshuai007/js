@@ -1,0 +1,13 @@
+<script>
+	function indexOf_fn(arr,fn){
+	  return arr.reduce((pre,cur,i)=>{
+		  if(fn(cur,i)) pre.push(i)
+			return pre
+		},[])
+	}
+	const arr=[1, 2, 3, 4]
+	function fn(d,i){
+	  return d%2===0
+	}
+	console.log(indexOf_fn(arr,fn))
+</script>

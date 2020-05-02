@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+
+</style>
+</head>
+<body>
+<!--***先假设只有一层
+[].concat(...arr.map(d=>d))
+
+1.对数组进行map遍历
+2.如果d是数组，则递归，否知直接返回
+3.最终返回一个数组，进行打散
+-->
+<script>
+//深度遍历
+function flat(arr){
+  return [].concat(...arr.map(d=>Array.isArray(d)?flat(d):d))
+}
+console.log(flat(arr))
+</script>
+
+
+</body>
+</html>

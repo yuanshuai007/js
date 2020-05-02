@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+	body{
+	  margin:0;
+	}
+</style>
+</head>
+<body>
+	
+<script>
+/*
+/b 单词(有字符组成)的边界
+例如， 'er\b' 可以匹配"never" 中的 'er'，但不能匹配 "verb" 中的 'er'。
+*/
+
+const result='aa bb 11 _'.replace(/\b/g,'-')
+console.log(result)
+//-aa- -bb- -11- -_-
+</script>
+
+</body>
+</html>

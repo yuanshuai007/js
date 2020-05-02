@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+
+</style>
+</head>
+<body>
+<div id="jia" class="">jia</div>
+<div id="den" class="">den</div>
+<div id="den2" class="">den2</div>
+<div id="den3" class="">den3</div>
+<script>
+let jia=document.getElementById('jia')
+let den=document.getElementById('den')
+let den2=document.getElementById('den2')
+let den3=document.getElementById('den3')
+class getTab{
+  static name=1;
+	a=1;
+  addName(){
+	  let _this=this;
+		jia.onclick=function(){
+		  _this.name++;
+		}
+		den.onclick=function(){
+		  console.log(_this.name)
+		}
+	}
+	get val(){return 'val'}
+}
+class RealA extends getTab{
+  init(){
+	  let _this=this;
+		den2.onclick=function(){
+		  console.log(_this.name)
+		}
+	}
+}
+class RealB extends getTab{
+  init(){
+	  let _this=this;
+		den3.onclick=function(){
+		  console.log(_this.name)
+		}
+	}
+}
+console.dir(getTab)
+new getTab().addName()
+new RealA().init()
+new RealB().init()
+</script>
+
+
+</body>
+</html>
